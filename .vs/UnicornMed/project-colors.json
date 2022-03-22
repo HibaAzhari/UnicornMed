@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "8f326c95-bd3e-4ca9-bc76-3ff3f3d9f2e5": {
+      "ProjectGuid": "8f326c95-bd3e-4ca9-bc76-3ff3f3d9f2e5",
+      "DisplayName": "UnicornMed.Api",
+      "ColorIndex": 0
+    },
+    "bd0a5188-2a9a-44a9-87cd-f807d23b8d0d": {
+      "ProjectGuid": "bd0a5188-2a9a-44a9-87cd-f807d23b8d0d",
+      "DisplayName": "UnicornMed.Common",
+      "ColorIndex": 1
+    },
+    "92ada903-509e-4713-84d1-7e94ef95b1ed": {
+      "ProjectGuid": "92ada903-509e-4713-84d1-7e94ef95b1ed",
+      "DisplayName": "UnicornMed.Bot",
+      "ColorIndex": 2
+    },
+    "445e8197-bc87-4630-b933-4d4e48e7aecd": {
+      "ProjectGuid": "445e8197-bc87-4630-b933-4d4e48e7aecd",
+      "DisplayName": "UnicornMed.ReminderFunction",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
