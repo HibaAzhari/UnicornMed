@@ -9,7 +9,7 @@ using UnicornMed.Common.Models.Database.Bot;
 
 namespace UnicornMed.BotLibrary.Helpers
 {
-    public interface IConversationReferencesHelper
+    public interface IConversationReferenceHelper
     {
         Task AddorUpdateConversationRefrenceAsync(ConversationReference reference, TeamsChannelAccount member);
         Task DeleteConversationRefrenceAsync(ConversationReference reference, TeamsChannelAccount member);

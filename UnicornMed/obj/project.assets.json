@@ -10751,19 +10751,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Hiba\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\TechUnicorn\\UnicornMed\\UnicornMed\\UnicornMed.Api.csproj",
+      "projectUniqueName": "C:\\Users\\Hiba\\Desktop\\Tech Unicorn\\UnicornMedLatest\\UnicornMed\\UnicornMed\\UnicornMed.Api.csproj",
       "projectName": "UnicornMed.Api",
-      "projectPath": "C:\\Users\\User\\Desktop\\TechUnicorn\\UnicornMed\\UnicornMed\\UnicornMed.Api.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\TechUnicorn\\UnicornMed\\UnicornMed\\obj\\",
+      "projectPath": "C:\\Users\\Hiba\\Desktop\\Tech Unicorn\\UnicornMedLatest\\UnicornMed\\UnicornMed\\UnicornMed.Api.csproj",
+      "packagesPath": "C:\\Users\\Hiba\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Hiba\\Desktop\\Tech Unicorn\\UnicornMedLatest\\UnicornMed\\UnicornMed\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Hiba\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10777,11 +10777,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\TechUnicorn\\UnicornMed\\UnicornMed.BotLibrary\\UnicornMed.BotLibrary.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\TechUnicorn\\UnicornMed\\UnicornMed.BotLibrary\\UnicornMed.BotLibrary.csproj"
+            "C:\\Users\\Hiba\\Desktop\\Tech Unicorn\\UnicornMedLatest\\UnicornMed\\UnicornMed.BotLibrary\\UnicornMed.BotLibrary.csproj": {
+              "projectPath": "C:\\Users\\Hiba\\Desktop\\Tech Unicorn\\UnicornMedLatest\\UnicornMed\\UnicornMed.BotLibrary\\UnicornMed.BotLibrary.csproj"
             },
-            "C:\\Users\\User\\Desktop\\TechUnicorn\\UnicornMed\\UnicornMed.Common\\UnicornMed.Common.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\TechUnicorn\\UnicornMed\\UnicornMed.Common\\UnicornMed.Common.csproj"
+            "C:\\Users\\Hiba\\Desktop\\Tech Unicorn\\UnicornMedLatest\\UnicornMed\\UnicornMed.Common\\UnicornMed.Common.csproj": {
+              "projectPath": "C:\\Users\\Hiba\\Desktop\\Tech Unicorn\\UnicornMedLatest\\UnicornMed\\UnicornMed.Common\\UnicornMed.Common.csproj"
             }
           }
         }
@@ -10857,7 +10857,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

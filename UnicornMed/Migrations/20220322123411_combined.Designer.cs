@@ -10,8 +10,8 @@ using UnicornMed.Common.Context;
 namespace UnicornMed.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220310120616_rollback")]
-    partial class rollback
+    [Migration("20220322123411_combined")]
+    partial class combined
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -181,6 +181,27 @@ namespace UnicornMed.Api.Migrations
                     b.HasKey("UPN");
 
                     b.ToTable("ConversationReferenceEntities");
+                });
+
+            modelBuilder.Entity("UnicornMed.Common.Models.UserEntity", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AltEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Department")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("UnicornMed.Common.Models.Database.API.Admin", b =>

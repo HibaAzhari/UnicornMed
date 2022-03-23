@@ -1,17 +1,22 @@
-﻿using Microsoft.AspNetCore.Authentication.AzureAD.UI;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="AuthenticationServiceCollectionExtensions.cs" company="Microsoft">
+// Copyright (c) Microsoft. All rights reserved.
+// </copyright>
 
-namespace UnicornMed.Common.Authentication
+namespace UnicornMed.Authentication
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.AspNetCore.Authentication.AzureAD.UI;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.IdentityModel.Tokens;
+
+    /// <summary>
+    /// Extension class for registering auth services in DI container.
+    /// </summary>
     public static class AuthenticationServiceCollectionExtensions
     {
         private static readonly string ClientIdConfigurationSettingsKey = "AzureAd:ClientId";
@@ -51,10 +56,7 @@ namespace UnicornMed.Common.Authentication
                     {
                         ValidAudiences = AuthenticationServiceCollectionExtensions.GetValidAudiences(configuration),
                         AudienceValidator = AuthenticationServiceCollectionExtensions.AudienceValidator,
-                        ValidIssuers = AuthenticationServiceCollectionExtensions.GetValidIssuers(configuration),
-                        ValidateIssuer = true,
-                        IssuerValidator = AuthenticationServiceCollectionExtensions.IssuerValidator
-
+                        ValidateIssuer = false,
                     };
                 });
         }
@@ -166,33 +168,7 @@ namespace UnicornMed.Common.Authentication
                 }
             }
 
-            return false;
-        }
-
-        private static string IssuerValidator(
-            string tokenIssuer,
-            SecurityToken securityToken,
-            TokenValidationParameters validationParameters)
-        {
-            if (string.IsNullOrEmpty(tokenIssuer))
-            {
-                throw new ApplicationException("No Issuer defined in token!");
-            }
-
-            var ValidIssuers = validationParameters.ValidIssuers;
-            if (ValidIssuers == null || ValidIssuers.Count() == 0)
-            {
-                throw new ApplicationException("No valid issuer defined in validationParameters!");
-            }
-
-
-            if (ValidIssuers.Any(validIssuer => validIssuer.Equals(tokenIssuer, StringComparison.OrdinalIgnoreCase)))
-            {
-                return tokenIssuer;
-            }
-
-
-            throw new SecurityTokenInvalidIssuerException("Issuer does not match any valid issuers");
+            return true;
         }
     }
 }

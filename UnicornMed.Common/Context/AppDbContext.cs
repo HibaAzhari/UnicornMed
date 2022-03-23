@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Bot.Schema;
 using Microsoft.EntityFrameworkCore;
+using UnicornMed.Common.Models;
 using UnicornMed.Common.Models.Database.API;
 using UnicornMed.Common.Models.Database.Bot;
 
@@ -25,7 +26,11 @@ namespace UnicornMed.Common.Context
         public DbSet<Booking> Bookings { get; set; }
 
         public DbSet<ConversationReferenceEntity> ConversationReferenceEntities { get; set; }
+        
+        public DbSet<UserEntity> Users { get; set; }
 
-       // public DbSet<ConversationReference> converationReferences { get; set; }
+
+
+        // public DbSet<ConversationReference> converationReferences { get; set; }
     }
 }

@@ -11,11 +11,11 @@ using UnicornMed.Common.Models.Database.Bot;
 
 namespace UnicornMed.BotLibrary.Helpers
 {
-    public class ConversationReferencesHelper : IConversationReferencesHelper
+    public class ConversationReferenceHelper : IConversationReferenceHelper
     {
         private readonly AppDbContext context;
         
-        public ConversationReferencesHelper(AppDbContext context)
+        public ConversationReferenceHelper(AppDbContext context)
         {
             this.context = context;
         }

@@ -1,14 +1,24 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="MustBeValidUpnHandler.cs" company="Microsoft">
+// Copyright (c) Microsoft. All rights reserved.
+// </copyright>
 
-namespace UnicornMed.Common.Authentication
+namespace UnicornMed.Authentication
 {
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authorization;
+
+    using Microsoft.Extensions.Configuration;
+    /// <summary>
+    /// This class is an authorization handler, which handles the authorization requirement.
+    /// </summary>
     public class ValidateIssuerHandler : AuthorizationHandler<ValidateIssuerRequirement>
     {
+        /// <summary>
+        /// This method handles the authorization requirement.
+        /// </summary>
+        /// <param name="context">AuthorizationHandlerContext instance.</param>
+        /// <param name="requirement">IAuthorizationRequirement instance.</param>
+        /// <returns>A task that represents the work queued to execute.</returns>
         protected override Task HandleRequirementAsync(
             AuthorizationHandlerContext context,
             ValidateIssuerRequirement requirement)
@@ -33,5 +43,6 @@ namespace UnicornMed.Common.Authentication
 
             return Task.CompletedTask;
         }
+
     }
 }

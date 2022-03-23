@@ -19,3 +19,24 @@ C:\Users\User\Desktop\TechUnicorn\UnicornMed\UnicornMed.BotLibrary\obj\Debug\net
 C:\Users\User\Desktop\TechUnicorn\UnicornMed\UnicornMed.BotLibrary\obj\Debug\netcoreapp3.1\UnicornMed.BotLibrary.csproj.CopyComplete
 C:\Users\User\Desktop\TechUnicorn\UnicornMed\UnicornMed.BotLibrary\obj\Debug\netcoreapp3.1\UnicornMed.BotLibrary.dll
 C:\Users\User\Desktop\TechUnicorn\UnicornMed\UnicornMed.BotLibrary\obj\Debug\netcoreapp3.1\UnicornMed.BotLibrary.pdb
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\DeploymentTemplates\new-rg-parameters.json
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\DeploymentTemplates\preexisting-rg-parameters.json
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\DeploymentTemplates\template-with-new-rg.json
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\DeploymentTemplates\template-with-preexisting-rg.json
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\UnicornMed.Common.deps.json
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\UnicornMed.Common.runtimeconfig.json
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\UnicornMed.Common.runtimeconfig.dev.json
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\UnicornMed.Common.exe
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\UnicornMed.BotLibrary.deps.json
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\UnicornMed.BotLibrary.dll
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\UnicornMed.BotLibrary.pdb
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\UnicornMed.Common.dll
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\bin\Debug\netcoreapp3.1\UnicornMed.Common.pdb
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\obj\Debug\netcoreapp3.1\UnicornMed.BotLibrary.csproj.AssemblyReference.cache
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\obj\Debug\netcoreapp3.1\UnicornMed.BotLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\obj\Debug\netcoreapp3.1\UnicornMed.BotLibrary.AssemblyInfoInputs.cache
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\obj\Debug\netcoreapp3.1\UnicornMed.BotLibrary.AssemblyInfo.cs
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\obj\Debug\netcoreapp3.1\UnicornMed.BotLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\obj\Debug\netcoreapp3.1\UnicornMed.BotLibrary.csproj.CopyComplete
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\obj\Debug\netcoreapp3.1\UnicornMed.BotLibrary.dll
+C:\Users\Hiba\Desktop\Tech Unicorn\UnicornMedLatest\UnicornMed\UnicornMed.BotLibrary\obj\Debug\netcoreapp3.1\UnicornMed.BotLibrary.pdb

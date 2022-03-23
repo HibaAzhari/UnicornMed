@@ -26,7 +26,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.OpenApi.Models;
 using UnicornMed.Common.Helpers.API.AdminHelper;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using UnicornMed.Common.Authentication;
+using UnicornMed.Authentication;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Bot.Builder;
@@ -51,25 +51,21 @@ namespace UnicornMed
             
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options => options.AddDefaultPolicy(
-              builder =>
-              {
-                  builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-              }));
+            //services.AddCors(options => options.AddDefaultPolicy(
+            //  builder =>
+            //  {
+            //      builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            //  }));
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
-                "Server=localhost\\SQLEXPRESS;Database=UnicornMedDb;Trusted_Connection=True;", b => b.MigrationsAssembly("UnicornMed.Api")));
-
-            var dbContext = services.BuildServiceProvider().GetService<AppDbContext>();
-
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
-                "Server=localhost\\SQLEXPRESS;Database=UnicornMedDb;Trusted_Connection=True;", b => b.MigrationsAssembly("UnicornMed.Api")));
+                Configuration["ConnectionStrings:DB"], b => b.MigrationsAssembly("UnicornMed.Api")));
 
             //services.AddHttpClient().AddControllers().AddNewtonsoftJson();
 
-            services.AddScoped<IConversationReferencesHelper, ConversationReferencesHelper>();
+            services.AddScoped<IConversationReferenceHelper, ConversationReferenceHelper>();
 
             services.AddScoped<INotificationHelper, NotificationHelper>();
+            services.AddScoped<IEmailPromptHelper, EmailPromptHelper>();
 
             // Create the Bot Framework Authentication to be used with the Bot Adapter.
             services.AddSingleton<BotFrameworkAuthentication, ConfigurationBotFrameworkAuthentication>();

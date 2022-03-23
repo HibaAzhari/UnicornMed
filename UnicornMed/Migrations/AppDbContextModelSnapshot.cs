@@ -181,6 +181,27 @@ namespace UnicornMed.Api.Migrations
                     b.ToTable("ConversationReferenceEntities");
                 });
 
+            modelBuilder.Entity("UnicornMed.Common.Models.UserEntity", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AltEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Department")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("UnicornMed.Common.Models.Database.API.Admin", b =>
                 {
                     b.HasOne("UnicornMed.Common.Models.Database.API.Admin", null)

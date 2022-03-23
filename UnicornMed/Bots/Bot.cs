@@ -21,19 +21,21 @@ namespace UnicornMed.Bots.Bot
     public class Bot : TeamsActivityHandler
     //where T : Dialog
     {
-        protected readonly IConversationReferencesHelper _conversationReferenceHelper; 
+        protected readonly IConversationReferenceHelper _conversationReferenceHelper; 
         protected readonly BotState ConversationState;
         protected readonly Dialog Dialog;
         protected readonly BotState UserState;
         protected readonly HttpClient client = new HttpClient();
+        protected readonly IEmailPromptHelper emailPromptHelper;
         //private readonly ConcurrentDictionary<string, ConversationReference> _conversationReferences;
 
-        public Bot(IConversationReferencesHelper conversationReferencesHelper, ConversationState conversationState, UserState userState)
+        public Bot(IConversationReferenceHelper conversationReferencesHelper, ConversationState conversationState, UserState userState, IEmailPromptHelper emailPromptHelper)
         {
             //, T dialog
             _conversationReferenceHelper = conversationReferencesHelper; 
             ConversationState = conversationState;
             UserState = userState;
+            this.emailPromptHelper = emailPromptHelper;
             //Dialog = dialog;
         }
 
@@ -90,161 +92,27 @@ namespace UnicornMed.Bots.Bot
 
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
-            if (turnContext.Activity.Text.ToLower().Contains("get all doctors"))
+            if (turnContext.Activity.Value != null)
             {
-                var response = await client.GetAsync("https://localhost:5001/api/doctor/doctors");
-                IEnumerable<DoctorItem> doctors = JsonConvert.DeserializeObject<List<DoctorItem>>(response.Content.ReadAsStringAsync().Result);
-                if (doctors != null && doctors.Any())
+                dynamic data = turnContext.Activity.Value;
+                //await turnContext.SendActivityAsync("Submitting");
+
+                if(data.type == "altEmail")
                 {
-                    var res = MessageFactory.Attachment(AdaptiveCardHelper.GetDoctorListCardActivity(doctors.ToList()));
-                    res.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                    await turnContext.SendActivityAsync(res, cancellationToken);
+                    await this.emailPromptHelper.RegisterEmail(data.email, data.Name, data.dept);
+                    await turnContext.SendActivityAsync("Successfully Registered:\n\nName: " + data.Name + "\n\nDepartment: " + data.dept + "\n\nAlternate Email: " + data.email);
                 }
-                else
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"No doctors on record"), cancellationToken);
-                return;
-            }
-            if (turnContext.Activity.Text.ToLower().Contains("get doctor"))
-            {
-                int id = 1; // get from user input text
-                var response = await client.GetAsync("https://localhost:5001/api/doctor/"+id);
-                DoctorItem doctor = JsonConvert.DeserializeObject<DoctorItem>(response.Content.ReadAsStringAsync().Result);
-                if (doctor != null)
+                else if (data.type == "booking")
                 {
-                    var res = MessageFactory.Attachment(AdaptiveCardHelper.GetDoctorById(doctor));
-                    await turnContext.SendActivityAsync(res, cancellationToken);
+                    string startTime = data.date + "T" + data.start + ":00";
+                    string endTime = data.date + "T" + data.end + ":00";
+                    await this.emailPromptHelper.MakeBooking(data.Doctor, data.Patient, startTime, endTime);
+                    await turnContext.SendActivityAsync("Booked");
                 }
-                else
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"Doctor not found"), cancellationToken);
-                return;
+
             }
-            if (turnContext.Activity.Text.ToLower().Contains("get free slots"))
-            {
-                var response = await client.GetAsync("https://localhost:5001/api/doctor/doctors");
-                IEnumerable<DoctorItem> doctors = JsonConvert.DeserializeObject<List<DoctorItem>>(response.Content.ReadAsStringAsync().Result);
-                if (doctors != null && doctors.Any())
-                {
-                    var res = MessageFactory.Attachment(AdaptiveCardHelper.GetDoctorListCardActivity(doctors.ToList()));
-                    res.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                    await turnContext.SendActivityAsync(res, cancellationToken);
-                }
-                else
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"No doctors on record"), cancellationToken);
-                return;
-            }
-            if (turnContext.Activity.Text.ToLower().Contains("get schedule"))
-            {
-                var response = await client.GetAsync("https://localhost:5001/api/doctor/doctors");
-                IEnumerable<DoctorItem> doctors = JsonConvert.DeserializeObject<List<DoctorItem>>(response.Content.ReadAsStringAsync().Result);
-                if (doctors != null && doctors.Any())
-                {
-                    var res = MessageFactory.Attachment(AdaptiveCardHelper.GetDoctorListCardActivity(doctors.ToList()));
-                    res.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                    await turnContext.SendActivityAsync(res, cancellationToken);
-                }
-                else
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"No doctors on record"), cancellationToken);
-                return;
-            }
-            if (turnContext.Activity.Text.ToLower().Contains("New booking"))
-            {
-                var response = await client.GetAsync("https://localhost:5001/api/doctor/doctors");
-                IEnumerable<DoctorItem> doctors = JsonConvert.DeserializeObject<List<DoctorItem>>(response.Content.ReadAsStringAsync().Result);
-                if (doctors != null && doctors.Any())
-                {
-                    var res = MessageFactory.Attachment(AdaptiveCardHelper.GetDoctorListCardActivity(doctors.ToList()));
-                    res.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                    await turnContext.SendActivityAsync(res, cancellationToken);
-                }
-                else
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"No doctors on record"), cancellationToken);
-                return;
-            }
-            if (turnContext.Activity.Text.ToLower().Contains("cancel booking"))
-            {
-                var response = await client.GetAsync("https://localhost:5001/api/doctor/doctors");
-                IEnumerable<DoctorItem> doctors = JsonConvert.DeserializeObject<List<DoctorItem>>(response.Content.ReadAsStringAsync().Result);
-                if (doctors != null && doctors.Any())
-                {
-                    var res = MessageFactory.Attachment(AdaptiveCardHelper.GetDoctorListCardActivity(doctors.ToList()));
-                    res.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                    await turnContext.SendActivityAsync(res, cancellationToken);
-                }
-                else
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"No doctors on record"), cancellationToken);
-                return;
-            }
-            if (turnContext.Activity.Text.ToLower().Contains("get all slots"))
-            {
-                var response = await client.GetAsync("https://localhost:5001/api/doctor/doctors");
-                IEnumerable<DoctorItem> doctors = JsonConvert.DeserializeObject<List<DoctorItem>>(response.Content.ReadAsStringAsync().Result);
-                if (doctors != null && doctors.Any())
-                {
-                    var res = MessageFactory.Attachment(AdaptiveCardHelper.GetDoctorListCardActivity(doctors.ToList()));
-                    res.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                    await turnContext.SendActivityAsync(res, cancellationToken);
-                }
-                else
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"No doctors on record"), cancellationToken);
-                return;
-            }
-            if (turnContext.Activity.Text.ToLower().Contains("get all schedules"))
-            {
-                var response = await client.GetAsync("https://localhost:5001/api/doctor/doctors");
-                IEnumerable<DoctorItem> doctors = JsonConvert.DeserializeObject<List<DoctorItem>>(response.Content.ReadAsStringAsync().Result);
-                if (doctors != null && doctors.Any())
-                {
-                    var res = MessageFactory.Attachment(AdaptiveCardHelper.GetDoctorListCardActivity(doctors.ToList()));
-                    res.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                    await turnContext.SendActivityAsync(res, cancellationToken);
-                }
-                else
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"No doctors on record"), cancellationToken);
-                return;
-            }
-            if (turnContext.Activity.Text.ToLower().Contains("get booking"))
-            {
-                var response = await client.GetAsync("https://localhost:5001/api/doctor/doctors");
-                IEnumerable<DoctorItem> doctors = JsonConvert.DeserializeObject<List<DoctorItem>>(response.Content.ReadAsStringAsync().Result);
-                if (doctors != null && doctors.Any())
-                {
-                    var res = MessageFactory.Attachment(AdaptiveCardHelper.GetDoctorListCardActivity(doctors.ToList()));
-                    res.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                    await turnContext.SendActivityAsync(res, cancellationToken);
-                }
-                else
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"No doctors on record"), cancellationToken);
-                return;
-            }
-            if (turnContext.Activity.Text.ToLower().Contains("get history"))
-            {
-                var response = await client.GetAsync("https://localhost:5001/api/doctor/doctors");
-                IEnumerable<DoctorItem> doctors = JsonConvert.DeserializeObject<List<DoctorItem>>(response.Content.ReadAsStringAsync().Result);
-                if (doctors != null && doctors.Any())
-                {
-                    var res = MessageFactory.Attachment(AdaptiveCardHelper.GetDoctorListCardActivity(doctors.ToList()));
-                    res.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                    await turnContext.SendActivityAsync(res, cancellationToken);
-                }
-                else
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"No doctors on record"), cancellationToken);
-                return;
-            }
-            if (turnContext.Activity.Text.ToLower().Contains("get most booked"))
-            {
-                var response = await client.GetAsync("https://localhost:5001/api/doctor/doctors");
-                IEnumerable<DoctorItem> doctors = JsonConvert.DeserializeObject<List<DoctorItem>>(response.Content.ReadAsStringAsync().Result);
-                if (doctors != null && doctors.Any())
-                {
-                    var res = MessageFactory.Attachment(AdaptiveCardHelper.GetDoctorListCardActivity(doctors.ToList()));
-                    res.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                    await turnContext.SendActivityAsync(res, cancellationToken);
-                }
-                else
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"No doctors on record"), cancellationToken);
-                return;
-            }
-            if (turnContext.Activity.Text.ToLower().Contains("get busy"))
+            
+            else if (turnContext.Activity.Text.ToLower().Contains("get all doctors"))
             {
                 var response = await client.GetAsync("https://localhost:5001/api/doctor/doctors");
                 IEnumerable<DoctorItem> doctors = JsonConvert.DeserializeObject<List<DoctorItem>>(response.Content.ReadAsStringAsync().Result);

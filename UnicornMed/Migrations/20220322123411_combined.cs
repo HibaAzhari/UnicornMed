@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UnicornMed.Api.Migrations
 {
-    public partial class rollback : Migration
+    public partial class combined : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -122,6 +122,21 @@ namespace UnicornMed.Api.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    AltEmail = table.Column<string>(nullable: true),
+                    Department = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Admins_AdminId",
                 table: "Admins",
@@ -159,6 +174,9 @@ namespace UnicornMed.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "Patients");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

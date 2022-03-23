@@ -11068,19 +11068,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Hiba\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\TechUnicorn\\UnicornMed\\UnicornMed.Common\\UnicornMed.Common.csproj",
+      "projectUniqueName": "C:\\Users\\Hiba\\Desktop\\Tech Unicorn\\UnicornMedLatest\\UnicornMed\\UnicornMed.Common\\UnicornMed.Common.csproj",
       "projectName": "UnicornMed.Common",
-      "projectPath": "C:\\Users\\User\\Desktop\\TechUnicorn\\UnicornMed\\UnicornMed.Common\\UnicornMed.Common.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\TechUnicorn\\UnicornMed\\UnicornMed.Common\\obj\\",
+      "projectPath": "C:\\Users\\Hiba\\Desktop\\Tech Unicorn\\UnicornMedLatest\\UnicornMed\\UnicornMed.Common\\UnicornMed.Common.csproj",
+      "packagesPath": "C:\\Users\\Hiba\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Hiba\\Desktop\\Tech Unicorn\\UnicornMedLatest\\UnicornMed\\UnicornMed.Common\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Hiba\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11188,7 +11188,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
