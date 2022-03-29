@@ -26,7 +26,7 @@ namespace UnicornMed.BotLibrary.Helpers
                 Port = 587,
                 UseDefaultCredentials = false, // This require to be before setting Credentials property
                 DeliveryMethod = SmtpDeliveryMethod.Network,
-                Credentials = new NetworkCredential("hiba@cxunicorn.com", "Zi7Minni99"), // you must give a full email address for authentication
+                Credentials = new NetworkCredential("hiba@cxunicorn.com", ""), // you must give a full email address for authentication
                 TargetName = "STARTTLS/smtp.office365.com", // Set to avoid MustIssueStartTlsFirst exception
                 EnableSsl = true // Set to avoid secure connection exception
             };
